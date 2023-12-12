@@ -2,20 +2,31 @@ import { FormProvider, useForm } from "react-hook-form"
 import { Input } from "../Common/ContactInput"
 import { BsFillCheckSquareFill } from "react-icons/bs";
 import Button from "../Ui/Button";
-import { useState } from "react";
-
+import { useRef, useState } from "react";
+import emailjs from '@emailjs/browser';
   
 export default function HomeContact() {
+  const form = useRef();
     const methods = useForm()
     const [success, setSuccess] = useState(false)
   
     const onSubmit = methods.handleSubmit(data => {
-      console.log(data)
+      emailjs.sendForm('service_al8cufn', 'template_tyhpr12', form.current, 'ZHTuZO5tKrxwvNADW')
+      .then((result) => {
+          console.log(result);
+          if(result.status == 200){
+            setSuccess(true)
+            setTimeout(() => {
+              setSuccess(false)
+            }, 2000)
+          }else {
+            alert("Oops! It seems there's an issue with our email service. Please reach out to us manually by using the email address provided in the footer. We apologize for any inconvenience.");
+          }
+      }, (error) => {
+          alert("Oops! It seems there's an issue with our email service. Please reach out to us manually by using the email address provided in the footer. We apologize for any inconvenience.");
+      });
+
       methods.reset()
-      setSuccess(true)
-      setTimeout(() => {
-        setSuccess(false)
-      }, 2000)
     })
   
     const name_validation = {
@@ -87,7 +98,7 @@ export default function HomeContact() {
       placeholder: 'type description ...',
       validation: {
         required: {
-          value: true,
+          value: false,
           message: 'Description is required',
         },
         minWordCount: {
@@ -122,13 +133,14 @@ export default function HomeContact() {
               noValidate
               autoComplete="off"
               className="container"
+              ref={form}
             >
               <div className="grid gap-5 md:grid-cols-2 text-white bg-transparent">
-                <Input {...name_validation} />
-                <Input {...email_validation} />
-                <Input {...websiteUrlValidation} />
-                <Input {...phone_validation} />
-                <Input {...desc_validation} className="md:col-span-2" />
+                <Input {...name_validation} name='name' />
+                <Input {...email_validation}  name='email'/>
+                <Input {...websiteUrlValidation}  name='website'/>
+                <Input {...phone_validation}  name='phone'/>
+                <Input {...desc_validation} className="md:col-span-2" name='massage' />
               </div>
               <div className="mt-5">
                 {success && (
@@ -136,7 +148,7 @@ export default function HomeContact() {
                     <BsFillCheckSquareFill /> Form has been submitted successfully
                   </p>
                 )}
-                < Button className="hover:scale-x-110 " background="primary" size="medium"   onClick={onSubmit}>Submit</Button>
+                < Button className="hover:scale-x-110 " type="summit" background="primary" size="medium"   onClick={onSubmit}>Submit</Button>
               </div>
             </form>
           </FormProvider>

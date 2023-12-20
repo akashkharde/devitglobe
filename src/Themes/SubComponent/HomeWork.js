@@ -6,11 +6,15 @@ import pro1 from '../Assets/images/pro11.avif'
 import pro2 from '../Assets/images/pro2.png'
 import pro3 from '../Assets/images/pro3.png'
 import pro4 from '../Assets/images/pro4.png'
+import pro5 from '../Assets/images/saieng.png'
+
 import Button from "../Ui/Button";
 import th_pro1 from '../Assets/images/th_pro1.jpg';
 import th_pro2 from '../Assets/images/th_pro2.jpg';
 import th_pro3 from '../Assets/images/th_pro3.jpg';
 import th_pro4 from '../Assets/images/th_pro4.jpg';
+import th_pro5 from '../Assets/images/saieng.gif';
+
 import { useState } from "react";
 
 
@@ -19,6 +23,17 @@ export default function HomeWork() {
   const [note , setNote] = useState(false)
   const images = [
     {
+      id:1,
+      original: pro5,
+      thumbnail:th_pro5,
+      name: 'Sai Shraddha Enginnerings',
+      type: "Website",
+      status: 'Under Constructios',
+      Address: "https://saishraddhaeng.devitglobe.com/",
+      msg :false
+    },
+    {
+      id:2,
       original: pro3,
       thumbnail:th_pro3,
       name: 'Pixibytez',
@@ -28,6 +43,7 @@ export default function HomeWork() {
       msg :false
     },
     {
+      id:3,
       original:pro4,
       thumbnail:th_pro4,
       name: 'Weather App',
@@ -38,6 +54,7 @@ export default function HomeWork() {
     },
 
     {
+      id:4,
       original:pro2,
       thumbnail:th_pro2,
       name: 'Pinnac Enginnering Solutions',
@@ -47,6 +64,7 @@ export default function HomeWork() {
       msg :false
     },
     {
+      id:5,
       original: pro1,
       thumbnail: th_pro1,
       name: 'BestBet Builder',
@@ -76,9 +94,9 @@ export default function HomeWork() {
         <img src={item.original} alt={item.name} className="projectImg" />
         <div className="projectInfo">
             <div className="projectInfodiv">
-              <div className="h-8 md:h-10">{item.name}</div>
-              <div className="h-8 md:h-10">{item.type}</div>
-              <div className="h-8 md:h-10">{item.status}</div>
+              <div className="h-8 md:h-10">Name: {item.name}</div>
+              <div className="h-8 md:h-10">Type: {item.type}</div>
+              <div className="h-8 md:h-10">Status: {item.status}</div>
               <div className="h-8 md:h-10 lg:h-20">
                 <Button onClick={() => handlePrjectAddress(item.Address , item.msg)}  size="small">
                   View Project

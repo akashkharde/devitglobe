@@ -118,12 +118,12 @@ export default function HomeWork() {
         <div className="mt-20">
           <Title name={'Projects'} />
         </div>
-        <div className="mt-2 lg:mx-12 md:mx-1 mb-14" >
+        <div className="mt-16 lg:mx-12 md:mx-1 mb-14" >
           <ImageGallery
             items={images}
             showBullets={false}
             showIndex={false}
-            showThumbnails={true}
+            showThumbnails={false}
             lazyLoad={false}
             showPlayButton={false}
             showNav={true}

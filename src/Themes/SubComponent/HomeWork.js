@@ -60,7 +60,7 @@ export default function HomeWork() {
       name: 'Pinnac Enginnering Solutions',
       type: "Website",
       status: 'Under Construction',
-      Address: "https://calm-kashata-1ac3ba.netlify.app/",
+      Address: "https://pinnac.devitglobe.com",
       msg :false
     },
     {
@@ -70,7 +70,7 @@ export default function HomeWork() {
       name: 'BestBet Builder',
       type: "Web App",
       status: 'Under Construction',
-      Address: "https://bestbetsbuilder.bettorlogic.com/",
+      Address: "https://bestbetsbuilder.bettorlogic.com",
       msg :true
     },
 
